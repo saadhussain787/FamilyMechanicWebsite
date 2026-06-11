@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<!-- 'h-full' on html and body elements ensures the document occupies the full height of the browser window -->
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <!-- 'viewport' ensures the website scales correctly on mobile devices and high-DPI screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Choice Auto Service | Premium Auto Care by Shafiq Patel</title>
+
+    <!-- Tailwind CSS via CDN (Content Delivery Network) for styling without local installation -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Custom deep dark gray for branding
+                        charcoal: '#1a1a1c',
+                        // Custom automotive red for primary call-to-actions
+                        brandRed: '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome CDN for rendering scalable vector icons throughout the website -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<!-- 'flex flex-col' sets up a vertical flexbox layout. 'min-h-full' ensures the body is at least the full height of the screen -->
+<body class="flex flex-col min-h-full bg-gray-50 text-gray-800">
+
+    <!-- 
+      GLOBAL NAVIGATION HEADER 
+      - 'sticky': Keeps the header fixed at the top of the viewport when scrolling down.
+      - 'top-0': Aligns the sticky header precisely to the top edge.
+      - 'z-50': Sets a high stack order so the navigation bar stays on top of all other page elements.
+      - 'bg-charcoal': Applies our custom dark grey background color.
+      - 'shadow-md': Adds a subtle drop shadow underneath the header for depth.
+    -->
+    <header class="sticky top-0 z-50 bg-charcoal text-white shadow-md">
+        <!-- 'max-w-7xl': Restricts the maximum content width on large monitors. 'mx-auto': Centers the container horizontally. -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 'flex': Uses flexbox layout. 'items-center': Vertically centers content. 'justify-between': Pushes child elements to opposite sides. -->
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Block -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <!-- Red wrench icon accent -->
+                        <i class="fa-solid fa-wrench text-brandRed text-2xl"></i>
+                        <!-- 'tracking-wider': Increases letter spacing for a premium look -->
+                        <span class="text-xl font-bold tracking-wider uppercase">
+                            My Choice<span class="text-brandRed"> Auto</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- 
+                  Desktop Navigation Menu 
+                  - 'hidden': Hides this element on small screens (mobile first default).
+                  - 'md:flex': Overrides 'hidden' on medium devices (768px wide) and up, displaying it as a flexbox row.
+                  - 'space-x-8': Adds horizontal spacing between each link.
+                -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
+                    <!-- 'transition-colors': Smoothly animates colors on hover. 'duration-200': Transition takes 200ms. -->
+                    <a href="index.html" class="text-brandRed transition-colors duration-200">Home</a>
+                    <a href="services.html" class="hover:text-brandRed transition-colors duration-200">Services</a>
+                    <a href="about.html" class="hover:text-brandRed transition-colors duration-200">About</a>
+                    <a href="contact.html" class="hover:text-brandRed transition-colors duration-200">Contact</a>
+                </nav>
+
+                <!-- Desktop Action Button (Hidden on mobile, visible on medium screens and up) -->
+                <div class="hidden md:block">
+                    <!-- Updated to 'Call Now' linking directly to the shop's telephone number -->
+                    <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white px-5 py-2.5 rounded text-sm font-semibold uppercase tracking-wider transition-colors duration-200">
+                        <i class="fa-solid fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+
+                <!-- 
+                  Mobile Hamburger Menu Button
+                  - 'md:hidden': Hides this button on medium screens and larger because desktop nav is visible instead.
+                -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 
+          Mobile Dropdown Menu 
+          - 'hidden': Stays hidden until toggled visible by JavaScript.
+          - 'md:hidden': Ensures this container never displays on desktop screens.
+        -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-gray-800 px-4 py-4 space-y-3">
+            <a href="index.html" class="block text-brandRed font-medium text-base">Home</a>
+            <a href="services.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Services</a>
+            <a href="about.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">About</a>
+            <a href="contact.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Contact</a>
+            <!-- Divider line inside the mobile drawer -->
+            <hr class="border-gray-800 my-2">
+            <!-- Mobile 'Call Now' link -->
+            <a href="tel:4165562424" class="block w-full text-center bg-brandRed hover:bg-red-700 text-white py-2.5 rounded text-sm font-semibold uppercase tracking-wider">
+                <i class="fa-solid fa-phone mr-2"></i>Call Now
+            </a>
+        </div>
+    </header>
+
+    <!-- 
+      MAIN CONTENT WRAPPER 
+      - 'flex-grow': Forces this tag to expand and take up all empty space, pushing the footer to the bottom of the viewport.
+    -->
+    <main class="flex-grow">
+        
+        <!-- 
+          HERO SECTION
+          - 'relative': Context to position the absolute dark overlay element.
+          - 'bg-cover bg-center': Centers and sizes the background image to fill the bounds.
+          - 'min-h-[75vh]': Sets container to 75% of the viewport height.
+        -->
+        <section id="hero" class="relative bg-cover bg-center flex items-center justify-center min-h-[75vh]" style="background-image: url('https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=1920');">
+            
+            <!-- 
+              DARK OVERLAY
+              - 'absolute inset-0': Spans the entire width and height of the hero parent container.
+              - 'bg-black bg-opacity-70': Layers black color with 70% opacity for high text legibility.
+            -->
+            <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+
+            <!-- 
+              HERO CONTENT CONTAINER 
+              - 'relative z-10': Positions elements safely above the dark overlay.
+            -->
+            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                    Honest Service <br class="hidden sm:inline">For Your <span class="text-brandRed">Car Care</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Family Owned & Operated by Certified Auto Technician <span class="text-white font-semibold">Shafiq Patel</span>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- Primary Solid CTA Button -->
+                    <a href="#appointment-section" class="w-full sm:w-auto bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-lg transition duration-200 text-center">
+                        Book An Appointment
+                    </a>
+
+                    <!-- Secondary Outlined CTA Button -->
+                    <a href="services.html" class="w-full sm:w-auto border border-white hover:bg-white hover:text-charcoal text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm transition duration-200 text-center">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          TRUST BANNER COMPONENT
+          - 'bg-neutral-900': Creates clean visual isolation using a dark gray bar immediately following the hero.
+          - 'border-y border-neutral-800': Applies subtle boundaries to separate the banner layout.
+        -->
+        <section id="trust-banner" class="bg-neutral-900 text-white border-y border-neutral-800 py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- 
+                  - 'grid-cols-1 md:grid-cols-3': Responsive 1 column on mobile, switching to 3 columns on desktop.
+                  - 'gap-6 md:gap-8': Standardizes uniform space distribution between trust blocks.
+                -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <!-- Trust Block 1 -->
+                    <!-- 'flex items-center': Aligns icons and descriptive copy cleanly inside their respective parent box -->
+                    <div class="flex items-center space-x-4 justify-center md:justify-start">
+                        <div class="flex-shrink-0">
+                            <!-- Circular badge background surrounding custom red icon -->
+                            <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
+                                <i class="fa-solid fa-circle-check text-brandRed text-xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm tracking-wider uppercase text-white">ASE Certified</h4>
+                            <p class="text-xs text-gray-400">Professional Technicians</p>
+                        </div>
+                    </div>
+
+                    <!-- Trust Block 2 -->
+                    <div class="flex items-center space-x-4 justify-center md:justify-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
+                                <i class="fa-solid fa-star text-brandRed text-xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm tracking-wider uppercase text-white">5-Star Rated</h4>
+                            <p class="text-xs text-gray-400">Trusted Local Auto Service</p>
+                        </div>
+                    </div>
+
+                    <!-- Trust Block 3 -->
+                    <div class="flex items-center space-x-4 justify-center md:justify-start">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
+                                <i class="fa-solid fa-house-chimney text-brandRed text-xl"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm tracking-wider uppercase text-white">Family Operated</h4>
+                            <p class="text-xs text-gray-400">Honest Care You Can Rely On</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          SERVICES PREVIEW SECTION
+          - 'bg-white': Clean background shade to establish visual separation from the dark trust banner above.
+          - 'py-20': Generous top and bottom padding (80px) to give content room to breathe.
+        -->
+        <section id="services-preview" class="bg-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header Area -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <!-- 'tracking-widest': Expanded letter spacing. 'text-brandRed': Custom primary red text. -->
+                    <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3">
+                        What We Do
+                    </span>
+                    <!-- 'text-3xl sm:text-4xl': Fluid scaling for headings. 'tracking-tight': Compact tracking for premium headlines. -->
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">
+                        Professional Auto Repair Services
+                    </h2>
+                    <!-- Divider element for visual styling -->
+                    <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded"></div>
+                </div>
+
+                <!-- 
+                  Services 3-Column Grid Layout
+                  - 'grid-cols-1': Stacked cards on mobile.
+                  - 'md:grid-cols-3': Evenly distributed 3-column layout on medium screens (768px wide) and up.
+                  - 'gap-8': Standardizes separation spacing between individual elements.
+                -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Service Card 1: Brake Service -->
+                    <!-- 
+                      - 'group': Enables parent-state target tracking so child elements can react when the user hovers over the card.
+                      - 'transition-all duration-300': Creates smooth, animated transitions for background shadows or position shifts.
+                      - 'hover:-translate-y-1': Elevates the card slightly along the Y-axis when hovered.
+                      - 'hover:shadow-md': Increases outer depth shadow smoothly on hover.
+                    -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <!-- Badge Accent Container -->
+                        <!-- 'bg-red-50': Light native red overlay background. 'text-brandRed': Displays standard red icons. -->
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-car-burst text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Brake Service</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Complete brake inspections, pad replacement, and rotor resurfacing to ensure your stopping power is reliable.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <!-- 'group-hover:translate-x-1': Slightly moves the arrow icon rightward during card hovers -->
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Card 2: Diagnostic Check -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-computer text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Diagnostic Check</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Advanced digital diagnostics to pinpoint performance warnings, sensor anomalies, and engine trouble codes.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Card 3: Oil & Filter Change -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-oil-can text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Oil & Filter Change</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Premium standard or synthetic fluid replacement paired with fresh filters to extend high performance.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Card 4: Engine Repair -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-gears text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Engine Repair</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Precise component tuning, belts and hoses maintenance, and engine rebuilds managed by certified specialists.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Card 5: Steering & Suspension -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-circle-dot text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Steering & Suspension</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Shock and strut replacement, wheel alignments, and linkage repairs for a controlled, comfortable ride.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service Card 6: Battery & Electrical -->
+                    <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
+                            <i class="fa-solid fa-battery-three-quarters text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-charcoal mb-3">Battery & Electrical</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                            Testing, cleaning, and replacement of vehicle batteries, alternators, starters, and general wiring paths.
+                        </p>
+                        <a href="services.html" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
+                            Learn More 
+                            <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          APPOINTMENT REQUEST SECTION
+          - 'bg-gray-100': Light gray backdrop providing strong visual separation from the white section above.
+          - 'py-20': Consistent vertical padding (80px top and bottom) keeping design intervals uniform.
+        -->
+        <section id="appointment-section" class="bg-gray-100 py-20">
+            <!-- 'max-w-7xl': Standardized responsive layout container width matching preceding blocks -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header Area -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <!-- Red uppercase, track-spaced label to establish typographic hierarchy -->
+                    <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3">
+                        Schedule Care
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">
+                        Request Your Appointment
+                    </h2>
+                    <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded"></div>
+                </div>
+
+                <!-- 
+                  Form Card Container
+                  - 'max-w-3xl': Restricts card width to keep inputs easily readable and centered.
+                  - 'bg-white': Clean white card surface visually separating forms from the gray backdrop.
+                  - 'rounded-lg': Rounds corners for a modern UI.
+                  - 'shadow-lg': Soft drop shadow adding realistic depth context.
+                -->
+                <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-10 border border-gray-100">
+                    
+                    <!-- 
+                      Formspree Integration
+                      - action: Pointing to Formspree endpoint (Make sure to replace 'YOUR_FORM_ID' with your real endpoint once created).
+                      - method: "POST" is mandatory for submitting secure payload data to a form handler.
+                    -->
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+                        
+                        <!-- 
+                          Input Grid Container
+                          - 'grid-cols-1 md:grid-cols-2': Inputs stack vertically on mobile and split into columns on tablets/desktops.
+                          - 'gap-6': Provides uniform 24px layout gutters between fields.
+                        -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            
+                            <!-- Full Name Field -->
+                            <div class="flex flex-col">
+                                <!-- 'text-xs': Small label style. 'font-semibold': Clearly structures input titles. -->
+                                <label for="full-name" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                    Full Name <span class="text-brandRed">*</span>
+                                </label>
+                                <!-- 
+                                  - 'w-full': Auto-stretches field inside column bounds.
+                                  - 'focus:border-brandRed': Dynamic color ring border on hover/focus.
+                                  - 'focus:ring-brandRed': Restricts Tailwind focus rings to our brand colors.
+                                -->
+                                <input 
+                                    type="text" 
+                                    name="name" 
+                                    id="full-name" 
+                                    required 
+                                    placeholder="John Doe" 
+                                    class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                >
+                            </div>
+
+                            <!-- Phone Number Field -->
+                            <div class="flex flex-col">
+                                <label for="phone-number" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                    Phone Number <span class="text-brandRed">*</span>
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    name="phone" 
+                                    id="phone-number" 
+                                    required 
+                                    placeholder="(416) 555-0199" 
+                                    class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                >
+                            </div>
+
+                            <!-- 
+                              Vehicle Information Group (Grid-span over full row)
+                              - 'md:col-span-2': Forces container to span full width of desktop layouts.
+                            -->
+                            <div class="md:col-span-2 grid grid-cols-3 gap-4">
+                                <!-- Vehicle Year -->
+                                <div class="flex flex-col">
+                                    <label for="vehicle-year" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                        Year <span class="text-brandRed">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        name="year" 
+                                        id="vehicle-year" 
+                                        required 
+                                        placeholder="2018" 
+                                        class="w-full bg-gray-50 border border-gray-200 rounded px-3 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                    >
+                                </div>
+
+                                <!-- Vehicle Make -->
+                                <div class="flex flex-col">
+                                    <label for="vehicle-make" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                        Make <span class="text-brandRed">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        name="make" 
+                                        id="vehicle-make" 
+                                        required 
+                                        placeholder="Toyota" 
+                                        class="w-full bg-gray-50 border border-gray-200 rounded px-3 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                    >
+                                </div>
+
+                                <!-- Vehicle Model -->
+                                <div class="flex flex-col">
+                                    <label for="vehicle-model" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                        Model <span class="text-brandRed">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        name="model" 
+                                        id="vehicle-model" 
+                                        required 
+                                        placeholder="Camry" 
+                                        class="w-full bg-gray-50 border border-gray-200 rounded px-3 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Preferred Appointment Date Field -->
+                            <!-- 'md:col-span-2': Centered across desktop grids, keeping layout proportions symmetric -->
+                            <div class="md:col-span-2 flex flex-col">
+                                <label for="preferred-date" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                    Preferred Appointment Date <span class="text-brandRed">*</span>
+                                </label>
+                                <input 
+                                    type="date" 
+                                    name="date" 
+                                    id="preferred-date" 
+                                    required 
+                                    class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150"
+                                >
+                            </div>
+
+                            <!-- Describe the Issue Area (Spans entire horizontal width of form) -->
+                            <div class="md:col-span-2 flex flex-col">
+                                <label for="issue-description" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                                    Describe The Issue / Required Service <span class="text-brandRed">*</span>
+                                </label>
+                                <!-- 'resize-none': Prevents form break hazards by forcing a fixed-height scroll container -->
+                                <textarea 
+                                    name="message" 
+                                    id="issue-description" 
+                                    rows="4" 
+                                    required 
+                                    placeholder="Please describe symptoms, unusual noises, or specific services needed (e.g., Brake inspection, Oil Change, Engine light diagnostics)..." 
+                                    class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150 resize-none"
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- Submit Button Container -->
+                        <div class="pt-4">
+                            <!-- 
+                              - 'w-full': Forces full form span for quick mobile tap execution.
+                              - 'shadow-md': Separates action block from white card interface.
+                            -->
+                            <button 
+                                type="submit" 
+                                class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-md transition-colors duration-200 flex items-center justify-center space-x-2"
+                            >
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Submit Request</span>
+                            </button>
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 
+      GLOBAL FOOTER 
+      - 'border-t-4 border-brandRed': Draws a thick, premium red accent band across the top of the footer.
+    -->
+    <footer class="bg-charcoal text-gray-400 border-t-4 border-brandRed">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- 
+              Grid Layout for Footer Columns
+              - 'grid': Activates CSS Grid.
+              - 'grid-cols-1': Defaults to a single column layout on mobile screens.
+              - 'md:grid-cols-3': Switches automatically to a three-column layout on medium screens (768px wide) and up.
+              - 'gap-8': Adds spacing between rows and columns of the grid.
+            -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Column 1: Brand Brief & Technician Details -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-wrench text-brandRed text-xl"></i>
+                        <span class="text-lg font-bold text-white tracking-wider uppercase">My Choice Auto</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-2">
+                        Led by <strong>Shafiq Patel</strong>, a Certified Auto Technician, My Choice Auto Service provides honest, high-quality, and dependable mechanical repair.
+                    </p>
+                    <span class="inline-block bg-neutral-800 text-brandRed text-xs px-2.5 py-1 rounded font-semibold tracking-wider uppercase">
+                        Certified Auto Technician
+                    </span>
+                </div>
+
+                <!-- Column 2: Tabular Business Hours -->
+                <div>
+                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Hours of Operation</h3>
+                    <!-- 'space-y-2' applies vertical spacing uniformly between each list element -->
+                    <ul class="text-sm space-y-2">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span class="text-white">8:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span class="text-white">9:00 AM - 3:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span class="text-gray-500 italic">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Details -->
+                <div>
+                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Our Location</h3>
+                    <ul class="text-sm space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-brandRed mt-1"></i>
+                            <span>112 Select Ave Unit# 5, M1V 4A7</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-brandRed"></i>
+                            <a href="tel:4165562424" class="hover:text-white transition-colors duration-200">(416) 556-2424</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-brandRed"></i>
+                            <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-white transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom Border and Copyright Block -->
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs">
+                <p>&copy; 2026 My Choice Auto Service. All Rights Reserved. Licensed Auto Technicians.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTWEIGHT JAVASCRIPT FOR MOBILE DRAWER TOGGLE -->
+    <script>
+        // Store references to the DOM elements we want to interact with
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Listen for a 'click' event on the hamburger menu button
+        mobileMenuBtn.addEventListener('click', () => {
+            // 'classList.toggle' adds or removes the 'hidden' class dynamically, showing or hiding the menu
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
