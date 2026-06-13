@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!-- 'viewport' meta tag ensures correct mobile scaling and responsiveness across different devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Payments | My Choice Auto Service</title>
+    <title>Contact & Location | My Choice Auto Service</title>
 
     <!-- Tailwind CSS via CDN for rapid utility-first styling without local compilation -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,7 @@
 
     <!-- 
       GLOBAL NAVIGATION HEADER
-      - 'sticky top-0': Affixes the navbar to the top of the browser screen while scrolling.
+      - 'sticky top-0': Affixes the navbar to the top of the browser screen while scrolling down.
       - 'z-50': Prevents overlap errors by forcing the header to render over main content elements.
     -->
     <header class="sticky top-0 z-50 bg-charcoal text-white shadow-md">
@@ -115,7 +115,7 @@
                     
                     <!-- 
                       COLUMN A: APPOINTMENT REQUEST FORM
-                      - Structured inside a pristine white card frame with shadow depth to elevate it from the page.
+                      - Formspree attributes removed to transition submit processing to our custom AWS backend script.
                     -->
                     <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
                         <div class="mb-6">
@@ -128,10 +128,13 @@
                             </p>
                         </div>
 
-                        <!-- Formspree Handler -->
-                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-5">
+                        <!-- 
+                          AWS Serverless Form
+                          - Given 'id="appointment-form"' to hook the JavaScript event listener logic securely.
+                        -->
+                        <form id="appointment-form" class="space-y-5">
                             
-                            <!-- Full Name (Full width inside its column card) -->
+                            <!-- Full Name -->
                             <div class="flex flex-col">
                                 <label for="name" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
                                     Full Name <span class="text-brandRed">*</span>
@@ -206,63 +209,66 @@
                                 ></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 px-6 rounded uppercase tracking-wider text-xs shadow transition duration-200 flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                <span>Submit Request</span>
+                            <!-- Submit button config matched to index page loading logic -->
+                            <button id="submit-btn" type="submit" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 px-6 rounded uppercase tracking-wider text-xs shadow transition duration-200 flex items-center justify-center space-x-2">
+                                <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
+                                <span id="btn-text">Submit Request</span>
                             </button>
                         </form>
                     </div>
 
                     <!-- 
-                      COLUMN B: SECURE PAYMENT & MAP
-                      - Holds the payments module block on top and aligns the responsive map iframe underneath.
+                      COLUMN B: CONTACT DETAILS & MAP
+                      - Displays shop coordinates, phone, email and active location maps without processing secure payments.
                       - Uses 'flex flex-col space-y-8' to space elements down the column smoothly.
                     -->
                     <div class="flex flex-col space-y-8">
                         
-                        <!-- Secure Online Payments Card -->
+                        <!-- Contact Information Card -->
                         <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
-                            <div class="mb-4">
+                            <div class="mb-6">
                                 <h2 class="text-xl font-bold text-charcoal flex items-center gap-2">
-                                    <i class="fa-solid fa-shield-halved text-brandRed"></i>
-                                    Secure Online Payment
+                                    <i class="fa-solid fa-address-book text-brandRed"></i>
+                                    Shop Details
                                 </h2>
                                 <p class="text-xs text-gray-500 mt-1">
-                                    Pay your repair or diagnostic invoice online quickly and securely.
+                                    Feel free to drop by or reach out directly to our team.
                                 </p>
                             </div>
 
-                            <!-- Payment Options Sub-Layout Block -->
-                            <div class="flex flex-col sm:flex-row items-center gap-6 bg-white p-5 border border-gray-100 rounded-lg">
-                                <!-- Styled QR Placeholder representation -->
-                                <div class="flex flex-col items-center justify-center p-3 bg-gray-50 border border-dashed border-gray-200 rounded-md">
-                                    <i class="fa-solid fa-qrcode text-charcoal text-7xl"></i>
-                                    <span class="text-[10px] font-bold tracking-wider uppercase text-gray-400 mt-2">Scan QR to Pay</span>
-                                </div>
-
-                                <div class="flex-grow text-center sm:text-left space-y-3">
-                                    <p class="text-xs text-gray-600 leading-relaxed">
-                                        Scan the QR code with your mobile smartphone camera to access our secure payment page directly, or click the link button underneath to complete transaction via web browser.
-                                    </p>
-                                    <a href="#" class="w-full inline-flex items-center justify-center bg-brandRed hover:bg-red-700 text-white font-bold py-3 px-4 rounded uppercase tracking-wider text-xs shadow transition duration-200">
-                                        <i class="fa-solid fa-credit-card mr-2"></i>Pay Invoice Online
-                                    </a>
-                                </div>
-                            </div>
+                            <!-- Structured details list -->
+                            <ul class="text-sm space-y-4 text-gray-600">
+                                <li class="flex items-start space-x-3">
+                                    <i class="fa-solid fa-location-dot text-brandRed mt-1"></i>
+                                    <div>
+                                        <strong class="text-charcoal block">My Choice Auto Service</strong>
+                                        <span>112 Select Ave Unit# 5, Scarborough, ON M1V 4A7</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-phone text-brandRed"></i>
+                                    <div>
+                                        <strong class="text-charcoal block">Phone Number</strong>
+                                        <a href="tel:4165562424" class="hover:text-brandRed transition-colors duration-200">(416) 556-2424</a>
+                                    </div>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-envelope text-brandRed"></i>
+                                    <div>
+                                        <strong class="text-charcoal block">Email Address</strong>
+                                        <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-brandRed transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
 
                         <!-- Embedded Responsive Location Map Container -->
                         <!-- 'flex-grow h-72 lg:h-auto min-h-[300px]' helps map stretch to fill container area cleanly -->
-                        <div class="flex-grow flex flex-col bg-gray-50 border border-gray-100 rounded-lg p-4 shadow-sm min-h-[300px]">
+                        <div class="flex flex-col bg-gray-50 border border-gray-100 rounded-lg p-4 shadow-sm h-72 lg:h-auto lg:flex-grow min-h-[300px]">
                             <div class="mb-3 px-2 flex justify-between items-center text-xs">
                                 <span class="font-bold text-charcoal tracking-wide uppercase">Shop Location Map</span>
                                 <span class="text-brandRed font-medium">Scarborough, ON</span>
                             </div>
-                            <!-- 
-                              - 'w-full h-full': Fills structural wrapper.
-                              - 'rounded': Softens map sharp margins inside the card layout.
-                              - Google Embed query parameters aligned to the exact Unit #5 physical address.
-                            -->
                             <iframe 
                                 class="w-full h-full flex-grow rounded border border-gray-200 shadow-inner"
                                 src="https://maps.google.com/maps?q=112%20Select%20Ave%20Unit%205,%20Scarborough,%20ON%20M1V%204A7&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -351,14 +357,94 @@
         </div>
     </footer>
 
-    <!-- LIGHTWEIGHT SCRIPT FOR MOBILE NAVIGATION MENU DRAWER -->
+    <!-- JAVASCRIPT FOR MOBILE NAVIGATION AND SERVERLESS AWS INTEGRATION -->
     <script>
+        /* -------------------------------------------------------------
+         * 1. MOBILE MENU DRAWER TOGGLE LOGIC
+         * ------------------------------------------------------------- */
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileMenuBtn.addEventListener('click', () => {
-            // Toggles the visibility 'hidden' property class dynamically
             mobileMenu.classList.toggle('hidden');
+        });
+
+        /* -------------------------------------------------------------
+         * 2. AWS API GATEWAY / SERVERLESS FORM SUBMISSION WITH FETCH
+         * ------------------------------------------------------------- */
+        // Grab references to the form and its submission controls
+        const appointmentForm = document.getElementById('appointment-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnText = document.getElementById('btn-text');
+
+        // Add an EventListener to intercept the "submit" event before the browser reloads the page
+        appointmentForm.addEventListener('submit', function (event) {
+            
+            // 1. Prevent the standard HTML browser reload submit behavior
+            event.preventDefault();
+
+            // 2. Extract values from DOM inputs
+            const fullName = document.getElementById('name').value;
+            const phoneNumber = document.getElementById('phone').value;
+            const year = document.getElementById('year').value;
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const appointmentDate = document.getElementById('date').value;
+            const issueDescription = document.getElementById('issue').value;
+
+            // 3. Format the vehicle details into a single unified string
+            // This aligns our HTML client layout to match the single "vehicle" variable in the Lambda structure
+            const combinedVehicle = `${year} ${make} ${model}`.trim();
+
+            // 4. Construct the JSON payload with keys EXACTLY matching Lambda variables
+            const payload = {
+                name: fullName,
+                phone: phoneNumber,
+                vehicle: combinedVehicle,
+                issue: issueDescription,
+                date: appointmentDate
+            };
+
+            // 5. Update UI state to show visual loading feedback
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            btnIcon.className = "fa-solid fa-spinner animate-spin";
+            btnText.textContent = "Sending Request...";
+
+            // 6. Use the browser's Fetch API to dispatch the HTTP POST request to AWS API Gateway
+            fetch('https://aiun423k73.execute-api.ca-central-1.amazonaws.com/default/MechanicContactForm', {
+                method: 'POST', // Use POST method to safely send JSON payload in request body
+                headers: {
+                    'Content-Type': 'application/json' // Tell API Gateway / Lambda to expect raw JSON format
+                },
+                body: JSON.stringify(payload) // Convert JavaScript object to a raw string representation
+            })
+            // First step of the Promise chain: evaluates the incoming HTTP status
+            .then(response => {
+                // Check if response is within the HTTP OK (200-299) status range
+                if (response.ok) {
+                    // Alert user on success
+                    alert('Appointment request routed successfully!');
+                    // Reset all form inputs to empty states
+                    appointmentForm.reset();
+                } else {
+                    // Handle non-200 responses (e.g., 400 Bad Request, 500 Server Error)
+                    throw new Error(`Server returned HTTP ${response.status}`);
+                }
+            })
+            // Catch block to capture network disconnects, server issues, or rejected promises
+            .catch(error => {
+                console.error('Submission failed:', error);
+                alert('A problem occurred while routing your appointment request. Please call us directly at (416) 556-2424.');
+            })
+            // Finally block cleans up UI state regardless of success or failure
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                btnIcon.className = "fa-solid fa-paper-plane";
+                btnText.textContent = "Submit Request";
+            });
         });
     </script>
 </body>

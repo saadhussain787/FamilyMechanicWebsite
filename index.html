@@ -36,7 +36,7 @@
       GLOBAL NAVIGATION HEADER 
       - 'sticky': Keeps the header fixed at the top of the viewport when scrolling down.
       - 'top-0': Aligns the sticky header precisely to the top edge.
-      - 'z-50': Sets a high stack order so the navigation bar stays on top of all other page elements.
+      - 'z-50': Sets a high stack order so the navigation bar stays on top of other page elements.
       - 'bg-charcoal': Applies our custom dark grey background color.
       - 'shadow-md': Adds a subtle drop shadow underneath the header for depth.
     -->
@@ -383,11 +383,11 @@
                 <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-10 border border-gray-100">
                     
                     <!-- 
-                      Formspree Integration
-                      - action: Pointing to Formspree endpoint (Make sure to replace 'YOUR_FORM_ID' with your real endpoint once created).
-                      - method: "POST" is mandatory for submitting secure payload data to a form handler.
+                      Formspree Integration REMOVED: 
+                      - Given 'id="appointment-form"' to hook the JavaScript event listener logic securely.
+                      - Removed action and method attributes as submission transitions to asynchronous Fetch API.
                     -->
-                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+                    <form id="appointment-form" class="space-y-6">
                         
                         <!-- 
                           Input Grid Container
@@ -523,11 +523,12 @@
                               - 'shadow-md': Separates action block from white card interface.
                             -->
                             <button 
+                                id="submit-btn"
                                 type="submit" 
                                 class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-md transition-colors duration-200 flex items-center justify-center space-x-2"
                             >
-                                <i class="fa-solid fa-paper-plane"></i>
-                                <span>Submit Request</span>
+                                <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
+                                <span id="btn-text">Submit Request</span>
                             </button>
                         </div>
 
@@ -616,16 +617,95 @@
         </div>
     </footer>
 
-    <!-- LIGHTWEIGHT JAVASCRIPT FOR MOBILE DRAWER TOGGLE -->
+    <!-- LIGHTWEIGHT JAVASCRIPT FOR NAVIGATION & SERVERLESS AWS INTEGRATION -->
     <script>
-        // Store references to the DOM elements we want to interact with
+        /* -------------------------------------------------------------
+         * 1. MOBILE MENU DRAWER TOGGLE LOGIC
+         * ------------------------------------------------------------- */
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        // Listen for a 'click' event on the hamburger menu button
         mobileMenuBtn.addEventListener('click', () => {
-            // 'classList.toggle' adds or removes the 'hidden' class dynamically, showing or hiding the menu
             mobileMenu.classList.toggle('hidden');
+        });
+
+        /* -------------------------------------------------------------
+         * 2. AWS API GATEWAY / SERVERLESS FORM SUBMISSION WITH FETCH
+         * ------------------------------------------------------------- */
+        // Grab references to the form and its submission controls
+        const appointmentForm = document.getElementById('appointment-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnText = document.getElementById('btn-text');
+
+        // Add an EventListener to intercept the "submit" event before the browser reloads the page
+        appointmentForm.addEventListener('submit', function (event) {
+            
+            // 1. Prevent the standard HTML browser reload submit behavior
+            event.preventDefault();
+
+            // 2. Extract values from DOM inputs
+            const fullName = document.getElementById('full-name').value;
+            const phoneNumber = document.getElementById('phone-number').value;
+            const year = document.getElementById('vehicle-year').value;
+            const make = document.getElementById('vehicle-make').value;
+            const model = document.getElementById('vehicle-model').value;
+            const appointmentDate = document.getElementById('preferred-date').value;
+            const issueDescription = document.getElementById('issue-description').value;
+
+            // 3. Format the vehicle details into a single unified string
+            // This aligns our HTML client layout to match the single "vehicle" variable in the Lambda structure
+            const combinedVehicle = `${year} ${make} ${model}`.trim();
+
+            // 4. Construct the JSON payload with keys EXACTLY matching Lambda variables
+            const payload = {
+                name: fullName,
+                phone: phoneNumber,
+                vehicle: combinedVehicle,
+                issue: issueDescription,
+                date: appointmentDate
+            };
+
+            // 5. Update UI state to show visual loading feedback
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            btnIcon.className = "fa-solid fa-spinner animate-spin";
+            btnText.textContent = "Sending Request...";
+
+            // 6. Use the browser's Fetch API to dispatch the HTTP POST request to AWS API Gateway
+            // - fetch(url, options) returns a Promise resolving to a Response object
+            fetch('https://aiun423k73.execute-api.ca-central-1.amazonaws.com/default/MechanicContactForm', {
+                method: 'POST', // Use POST method to safely send JSON payload in request body
+                headers: {
+                    'Content-Type': 'application/json' // Tell API Gateway / Lambda to expect raw JSON format
+                },
+                body: JSON.stringify(payload) // Convert JavaScript object to a raw string representation
+            })
+            // First step of the Promise chain: evaluates the incoming HTTP status
+            .then(response => {
+                // Check if response is within the HTTP OK (200-299) status range
+                if (response.ok) {
+                    // Alert user on success
+                    alert('Appointment request routed successfully!');
+                    // Reset all form inputs to empty states
+                    appointmentForm.reset();
+                } else {
+                    // Handle non-200 responses (e.g., 400 Bad Request, 500 Server Error)
+                    throw new Error(`Server returned HTTP ${response.status}`);
+                }
+            })
+            // Catch block to capture network disconnects, server issues, or rejected promises
+            .catch(error => {
+                console.error('Submission failed:', error);
+                alert('A problem occurred while routing your appointment request. Please call us directly at (416) 556-2424.');
+            })
+            // Finally block cleans up UI state regardless of success or failure
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                btnIcon.className = "fa-solid fa-paper-plane";
+                btnText.textContent = "Submit Request";
+            });
         });
     </script>
 </body>
