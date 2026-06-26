@@ -1,387 +1,95 @@
-<!DOCTYPE html>
-<!-- 'h-full' on html and body elements ensures the document occupies the full height of the browser window -->
-<html lang="en" class="h-full">
-<head>
-    <meta charset="UTF-8">
-    <!-- 'viewport' ensures the website scales correctly on mobile devices and high-DPI screens -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Services | My Choice Auto Service</title>
+---
+layout: base.html
+title: Professional Services | My Choice Auto Service
+description: Explore our complete auto repair services in Scarborough. From brake repairs to engine diagnostics, Shafiq Patel provides reliable, licensed car care.
+activePage: services
+---
 
-    <!-- Tailwind CSS via CDN (Content Delivery Network) for styling without local installation -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<section class="bg-neutral-100 border-b border-gray-200 py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3 font-semibold">Our Offerings</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight leading-tight">Complete Auto Repair Catalog</h1>
+        <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded mb-6"></div>
+        <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">Explore our reliable service modules managed directly by Certified Auto Technician Shafiq Patel. We use professional diagnostic tools and quality parts to keep your vehicle running safely.</p>
+    </div>
+</section>
 
-    <!-- Custom Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Custom deep dark gray for branding
-                        charcoal: '#1a1a1c',
-                        // Custom automotive red for primary call-to-actions
-                        brandRed: '#dc2626',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- FontAwesome CDN for rendering scalable vector icons throughout the website -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<!-- 'flex flex-col' sets up a vertical flexbox layout. 'min-h-full' ensures the body is at least the full height of the screen -->
-<body class="flex flex-col min-h-full bg-gray-50 text-gray-800">
-
-    <!-- 
-      GLOBAL NAVIGATION HEADER 
-      - 'sticky': Keeps the header fixed at the top of the viewport when scrolling down.
-      - 'top-0': Aligns the sticky header precisely to the top edge.
-      - 'z-50': Sets a high stack order so the navigation bar stays on top of other page elements.
-      - 'bg-charcoal': Applies our custom dark grey background color.
-      - 'shadow-md': Adds a subtle drop shadow underneath the header for depth.
-    -->
-    <header class="sticky top-0 z-50 bg-charcoal text-white shadow-md">
-        <!-- 'max-w-7xl': Restricts the maximum content width on large monitors. 'mx-auto': Centers the container horizontally. -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- 'flex': Uses flexbox layout. 'items-center': Vertically centers content. 'justify-between': Pushes child elements to opposite sides. -->
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo Block -->
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <!-- Red wrench icon accent -->
-                        <i class="fa-solid fa-wrench text-brandRed text-2xl"></i>
-                        <!-- 'tracking-wider': Increases letter spacing for a premium look -->
-                        <span class="text-xl font-bold tracking-wider uppercase">
-                            My Choice<span class="text-brandRed"> Auto</span>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- 
-                  Desktop Navigation Menu 
-                  - 'hidden': Hides this element on small screens (mobile first default).
-                  - 'md:flex': Overrides 'hidden' on medium devices (768px wide) and up, displaying it as a flexbox row.
-                  - 'space-x-8': Adds horizontal spacing between each link.
-                -->
-                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
-                    <!-- Updated active page state: 'Services' is colored with 'text-brandRed' -->
-                    <a href="index.html" class="hover:text-brandRed transition-colors duration-200">Home</a>
-                    <a href="services.html" class="text-brandRed transition-colors duration-200">Services</a>
-                    <a href="about.html" class="hover:text-brandRed transition-colors duration-200">About</a>
-                    <a href="contact.html" class="hover:text-brandRed transition-colors duration-200">Contact</a>
-                </nav>
-
-                <!-- Desktop Action Button (Hidden on mobile, visible on medium screens and up) -->
-                <div class="hidden md:block">
-                    <!-- Links directly to the shop's telephone number using the 'tel' protocol -->
-                    <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white px-5 py-2.5 rounded text-sm font-semibold uppercase tracking-wider transition-colors duration-200">
-                        <i class="fa-solid fa-phone mr-2"></i>Call Now
-                    </a>
-                </div>
-
-                <!-- 
-                  Mobile Hamburger Menu Button
-                  - 'md:hidden': Hides this button on medium screens and larger because desktop nav is visible instead.
-                -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" type="button" class="text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-
+<section id="services-matrix" class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-car-burst text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Brake Service</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Ensuring reliable stopping power with diagnostics, quality pad replacements, and resurfacing procedures.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Brake Pad Replacement</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Rotor Resurfacing & Inspection</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Brake Fluid Flush & Maintenance</li>
+                </ul>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-computer text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Diagnostic Check</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Pinpoint warning signals and underlying issues using electronic vehicle system diagnostics scan tools.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Computer Engine Code Scans</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Electrical Circuit Troubleshooting</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Check Engine Light Isolation</li>
+                </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-oil-can text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Oil & Filter Change</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Engine protection using conventional or synthetic motor oil matched with premium replacement filters.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Premium Standard & Synthetic Fluids</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>OEM-Grade Filter Replacement</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Multi-point Fluid & Health Inspection</li>
+                </ul>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-gears text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Engine Repair</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Professional tuning, belt adjustments, gasket replacements, and mechanical block repairs.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Timing Belt & Hose Replacement</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Spark Plug & Ignition Calibration</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Head Gaskets & Internal Repairs</li>
+                </ul>
+            </div>
+            <!-- Card 5 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-circle-dot text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Steering & Suspension</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Handling maintenance including shock absorbers, link configurations, control arms, and strut updates.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Shocks & Struts Replacements</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Ball Joint & Control Arm Service</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Power Steering Components Tune-up</li>
+                </ul>
+            </div>
+            <!-- Card 6 -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6"><i class="fa-solid fa-battery-three-quarters text-xl"></i></div>
+                <h3 class="text-xl font-bold text-charcoal mb-3">Battery & Electrical</h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-6">Testing and resolution of vehicle starting mechanisms, alternator loads, and primary electrical circuits.</p>
+                <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Battery Charge & Load Diagnostics</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Alternator & Starter Replacements</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-green-600 mr-2.5"></i>Wiring Harness Diagnosis & Repair</li>
+                </ul>
             </div>
         </div>
-
-        <!-- 
-          Mobile Dropdown Menu 
-          - 'hidden': Stays hidden until toggled visible by JavaScript.
-          - 'md:hidden': Ensures this container never displays on desktop screens.
-        -->
-        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-gray-800 px-4 py-4 space-y-3">
-            <a href="index.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Home</a>
-            <a href="services.html" class="block text-brandRed font-medium text-base">Services</a>
-            <a href="about.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">About</a>
-            <a href="contact.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Contact</a>
-            <!-- Divider line inside the mobile drawer -->
-            <hr class="border-gray-800 my-2">
-            <!-- Mobile 'Call Now' link -->
-            <a href="tel:4165562424" class="block w-full text-center bg-brandRed hover:bg-red-700 text-white py-2.5 rounded text-sm font-semibold uppercase tracking-wider">
-                <i class="fa-solid fa-phone mr-2"></i>Call Now
+        <div class="mt-16 text-center">
+            <p class="text-gray-600 text-sm mb-4">Need a specialized service not listed above?</p>
+            <!-- Link updated to Pretty URL path -->
+            <a href="/contact/" class="inline-flex items-center justify-center bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 px-8 rounded uppercase tracking-wider text-xs transition duration-200">
+                <i class="fa-solid fa-circle-question mr-2"></i>Inquire Custom Service
             </a>
         </div>
-    </header>
-
-    <!-- 
-      MAIN CONTENT WRAPPER 
-      - 'flex-grow': Forces this tag to expand and take up all empty space, pushing the footer to the bottom of the viewport.
-    -->
-    <main class="flex-grow">
-
-        <!-- 
-          DEDICATED SERVICES HEADER AREA
-          - 'bg-neutral-100': Sets a clean, solid light gray background layout.
-          - 'py-16 md:py-20': Generous padding for a premium, spacious text header layout.
-        -->
-        <section class="bg-neutral-100 border-b border-gray-200 py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3">Our Offerings</span>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-charcoal tracking-tight leading-tight">
-                    Complete Auto Repair Catalog
-                </h1>
-                <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded mb-6"></div>
-                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Explore our reliable service modules managed directly by Certified Auto Technician Shafiq Patel. We use professional diagnostic tools and quality parts to keep your vehicle running safely.
-                </p>
-            </div>
-        </section>
-
-        <!-- 
-          EXPANDED SERVICES MATRIX GRID
-          - 'bg-white': Bright surface providing high contrast.
-          - 'py-20': Consistent spacing between layouts.
-        -->
-        <section id="services-matrix" class="bg-white py-20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- 
-                  Services 3-Column Grid Layout
-                  - 'grid-cols-1': Stacked cards on mobile devices.
-                  - 'lg:grid-cols-3': 3 columns on desktops.
-                  - 'gap-8': Standardizes separation spacing between individual elements.
-                -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Service Card 1: Brake Service -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-car-burst text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Brake Service</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Ensuring reliable stopping power with diagnostics, quality pad replacements, and resurfacing procedures.
-                        </p>
-                        <!-- Informational Bullet Points with green checkmarks -->
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Brake Pad Replacement
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Rotor Resurfacing & Inspection
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Brake Fluid Flush & Maintenance
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service Card 2: Diagnostic Check -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-computer text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Diagnostic Check</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Pinpoint warning signals and underlying issues using electronic vehicle system diagnostics scan tools.
-                        </p>
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Computer Engine Code Scans
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Electrical Circuit Troubleshooting
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Check Engine Light Isolation
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service Card 3: Oil & Filter Change -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-oil-can text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Oil & Filter Change</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Engine protection using conventional or synthetic motor oil matched with premium replacement filters.
-                        </p>
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Premium Standard & Synthetic Fluids
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>OEM-Grade Filter Replacement
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Multi-point Fluid & Health Inspection
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service Card 4: Engine Repair -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-gears text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Engine Repair</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Professional tuning, belt adjustments, gasket replacements, and mechanical block repairs.
-                        </p>
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Timing Belt & Hose Replacement
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Spark Plug & Ignition Calibration
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Head Gaskets & Internal Repairs
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service Card 5: Steering & Suspension -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-circle-dot text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Steering & Suspension</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Handling maintenance including shock absorbers, link configurations, control arms, and strut updates.
-                        </p>
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Shocks & Struts Replacements
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Ball Joint & Control Arm Service
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Power Steering Components Tune-up
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Service Card 6: Battery & Electrical -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm hover:shadow-md transition-all duration-300">
-                        <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6">
-                            <i class="fa-solid fa-battery-three-quarters text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-charcoal mb-3">Battery & Electrical</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            Testing and resolution of vehicle starting mechanisms, alternator loads, and primary electrical circuits.
-                        </p>
-                        <ul class="text-xs text-gray-700 space-y-2 border-t border-gray-200 pt-4">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Battery Charge & Load Diagnostics
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Alternator & Starter Replacements
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-check text-green-600 mr-2.5"></i>Wiring Harness Diagnosis & Repair
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <!-- Call to Action below the services list -->
-                <div class="mt-16 text-center">
-                    <p class="text-gray-600 text-sm mb-4">Need a specialized service not listed above?</p>
-                    <a href="contact.html" class="inline-flex items-center justify-center bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 px-8 rounded uppercase tracking-wider text-xs transition duration-200">
-                        <i class="fa-solid fa-circle-question mr-2"></i>Inquire Custom Service
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 
-      GLOBAL FOOTER 
-      - 'border-t-4 border-brandRed': Draws a thick, premium red accent band across the top of the footer.
-    -->
-    <footer class="bg-charcoal text-gray-400 border-t-4 border-brandRed">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            
-            <!-- Grid Layout matching the index page exactly -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Column 1: Brand Brief & Technician Details -->
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fa-solid fa-wrench text-brandRed text-xl"></i>
-                        <span class="text-lg font-bold text-white tracking-wider uppercase">My Choice Auto</span>
-                    </div>
-                    <p class="text-sm leading-relaxed mb-2">
-                        Led by <strong>Shafiq Patel</strong>, a Certified Auto Technician, My Choice Auto Service provides honest, high-quality, and dependable mechanical repair.
-                    </p>
-                    <span class="inline-block bg-neutral-800 text-brandRed text-xs px-2.5 py-1 rounded font-semibold tracking-wider uppercase">
-                        Certified Auto Technician
-                    </span>
-                </div>
-
-                <!-- Column 2: Tabular Business Hours -->
-                <div>
-                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Hours of Operation</h3>
-                    <ul class="text-sm space-y-2">
-                        <li class="flex justify-between">
-                            <span>Monday - Friday</span>
-                            <span class="text-white">8:00 AM - 6:00 PM</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Saturday</span>
-                            <span class="text-white">9:00 AM - 3:00 PM</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Sunday</span>
-                            <span class="text-gray-500 italic">Closed</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Contact Details -->
-                <div>
-                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Our Location</h3>
-                    <ul class="text-sm space-y-3">
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-location-dot text-brandRed mt-1"></i>
-                            <span>112 Select Ave Unit# 5, M1V 4A7</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fa-solid fa-phone text-brandRed"></i>
-                            <a href="tel:4165562424" class="hover:text-white transition-colors duration-200">(416) 556-2424</a>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <i class="fa-solid fa-envelope text-brandRed"></i>
-                            <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-white transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- Footer Bottom Border and Copyright Block -->
-            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs">
-                <p>&copy; 2026 My Choice Auto Service. All Rights Reserved. Licensed Auto Technicians.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- LIGHTWEIGHT JAVASCRIPT FOR MOBILE DRAWER TOGGLE -->
-    <script>
-        // Store references to the DOM elements we want to interact with
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        // Listen for a 'click' event on the hamburger menu button
-        mobileMenuBtn.addEventListener('click', () => {
-            // 'classList.toggle' adds or removes the 'hidden' class dynamically, showing or hiding the menu
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-</body>
-</html>
+    </div>
+</section>

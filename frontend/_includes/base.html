@@ -1,0 +1,181 @@
+<!-- frontend/_includes/base.html -->
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+
+    <!-- Tailwind CSS & Custom Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#1a1a1c',
+                        brandRed: '#dc2626',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AUTOMATIC LANGUAGE DETECTION -->
+    <div id="google_translate_element" class="hidden"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: true }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Dynamically inject JSON-LD schema ONLY on the Home Page -->
+    {% if page.url == "/" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "My Choice Auto Service",
+      "image": "https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=1920",
+      "url": "https://mychoiceautoservice.com",
+      "telephone": "+1-416-556-2424",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "112 Select Ave Unit# 5",
+        "addressLocality": "Scarborough",
+        "addressRegion": "ON",
+        "postalCode": "M1V 4A7",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "10:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "14:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "15:00"
+        }
+      ]
+    }
+    </script>
+    {% endif %}
+</head>
+<body class="flex flex-col min-h-full bg-gray-50 text-gray-800">
+
+    <!-- GLOBAL HEADER -->
+    <header class="sticky top-0 z-50 bg-charcoal text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <div class="flex-shrink-0">
+                    <!-- Link changed from index.html to / -->
+                    <a href="/" class="flex items-center space-x-2">
+                        <i class="fa-solid fa-wrench text-brandRed text-2xl"></i>
+                        <span class="text-xl font-bold tracking-wider uppercase">My Choice<span class="text-brandRed"> Auto</span></span>
+                    </a>
+                </div>
+
+                <!-- 
+                  Desktop Navigation Menu (Updated to Clean URLs)
+                -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
+                    <a href="/" class="{% if activePage == 'home' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Home</a>
+                    <a href="/services/" class="{% if activePage == 'services' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Services</a>
+                    <a href="/about/" class="{% if activePage == 'about' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">About</a>
+                    <a href="/contact/" class="{% if activePage == 'contact' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Contact</a>
+                </nav>
+
+                <div class="hidden md:block">
+                    <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white px-5 py-2.5 rounded text-sm font-semibold uppercase tracking-wider transition-colors duration-200">
+                        <i class="fa-solid fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Updated to Clean URLs) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-gray-800 px-4 py-4 space-y-3">
+            <a href="/" class="block {% if activePage == 'home' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">Home</a>
+            <a href="/services/" class="block {% if activePage == 'services' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">Services</a>
+            <a href="/about/" class="block {% if activePage == 'about' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">About</a>
+            <a href="/contact/" class="block {% if activePage == 'contact' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">Contact</a>
+            <hr class="border-gray-800 my-2">
+            <a href="tel:4165562424" class="block w-full text-center bg-brandRed hover:bg-red-700 text-white py-2.5 rounded text-sm font-semibold uppercase tracking-wider">
+                <i class="fa-solid fa-phone mr-2"></i>Call Now
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        {{ content | safe }}
+    </main>
+
+    <!-- GLOBAL FOOTER (The single source of truth for business hours) -->
+    <footer class="bg-charcoal text-gray-400 border-t-4 border-brandRed">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Column 1: Brand Brief -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa-solid fa-wrench text-brandRed text-xl"></i>
+                        <span class="text-lg font-bold text-white tracking-wider uppercase">My Choice Auto</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-2">Led by <strong>Shafiq Patel</strong>, a Certified Auto Technician, My Choice Auto Service provides honest, high-quality, and dependable mechanical repair.</p>
+                    <span class="inline-block bg-neutral-800 text-brandRed text-xs px-2.5 py-1 rounded font-semibold tracking-wider uppercase">Certified Auto Technician</span>
+                </div>
+                <!-- Column 2: Hours of Operation -->
+                <div>
+                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Hours of Operation</h3>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex justify-between"><span>Monday - Thursday</span><span class="text-white">10:00 AM - 6:00 PM</span></li>
+                        <li class="flex justify-between"><span>Friday</span><span class="text-white">2:00 PM - 6:00 PM</span></li>
+                        <li class="flex justify-between"><span>Saturday</span><span class="text-white">10:00 AM - 3:00 PM</span></li>
+                        <li class="flex justify-between"><span>Sunday</span><span class="text-gray-500 italic">Closed</span></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Contact Details -->
+                <div>
+                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Our Location</h3>
+                    <ul class="text-sm space-y-3">
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-location-dot text-brandRed mt-1"></i><span>112 Select Ave Unit# 5, M1V 4A7</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-phone text-brandRed"></i><a href="tel:4165562424" class="hover:text-white transition-colors duration-200">(416) 556-2424</a></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-brandRed"></i><a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-white transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs">
+                <p>&copy; 2026 My Choice Auto Service. All Rights Reserved. Licensed Auto Technicians.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LIGHTWEIGHT JAVASCRIPT FOR MOBILE DRAWER TOGGLE -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    </script>
+</body>
+</html>

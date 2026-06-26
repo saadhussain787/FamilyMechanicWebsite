@@ -1,451 +1,152 @@
-<!DOCTYPE html>
-<!-- 'h-full' ensures the document stretches to fill the browser viewport's total height -->
-<html lang="en" class="h-full">
-<head>
-    <meta charset="UTF-8">
-    <!-- 'viewport' meta tag ensures correct mobile scaling and responsiveness across different devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Location | My Choice Auto Service</title>
+---
+layout: base.html
+title: Contact & Location | My Choice Auto Service
+description: Book an appointment or visit My Choice Auto Service at 112 Select Ave Unit 5, Scarborough. Contact licensed mechanic Shafiq Patel at (416) 556-2424.
+activePage: contact
+---
 
-    <!-- Tailwind CSS via CDN for rapid utility-first styling without local compilation -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom Tailwind Configuration mapped directly to the shop's brand colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Custom deep charcoal gray used on all pages for headers, footer, and brand darks
-                        charcoal: '#1a1a1c',
-                        // Custom vibrant red for primary buttons and active navigational indicator states
-                        brandRed: '#dc2626',
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- FontAwesome CDN for rendering clean, scalable vector icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<!-- 'flex flex-col min-h-full' guarantees the body acts as a full-height layout container, keeping footer at bottom -->
-<body class="flex flex-col min-h-full bg-gray-50 text-gray-800">
-
-    <!-- 
-      GLOBAL NAVIGATION HEADER
-      - 'sticky top-0': Affixes the navbar to the top of the browser screen while scrolling down.
-      - 'z-50': Prevents overlap errors by forcing the header to render over main content elements.
-    -->
-    <header class="sticky top-0 z-50 bg-charcoal text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo Block -->
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fa-solid fa-wrench text-brandRed text-2xl"></i>
-                        <span class="text-xl font-bold tracking-wider uppercase">
-                            My Choice<span class="text-brandRed"> Auto</span>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Desktop Navigation Menu (hidden on mobile, flex row on screens 768px and wider) -->
-                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
-                    <a href="index.html" class="hover:text-brandRed transition-colors duration-200">Home</a>
-                    <a href="services.html" class="hover:text-brandRed transition-colors duration-200">Services</a>
-                    <a href="about.html" class="hover:text-brandRed transition-colors duration-200">About</a>
-                    <!-- Active state: 'Contact' uses the 'text-brandRed' accent color -->
-                    <a href="contact.html" class="text-brandRed transition-colors duration-200">Contact</a>
-                </nav>
-
-                <!-- Desktop 'Call Now' Action Button -->
-                <div class="hidden md:block">
-                    <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white px-5 py-2.5 rounded text-sm font-semibold uppercase tracking-wider transition-colors duration-200">
-                        <i class="fa-solid fa-phone mr-2"></i>Call Now
-                    </a>
-                </div>
-
-                <!-- Mobile Hamburger Menu Toggle Trigger -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" type="button" class="text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Mobile Dropdown Drawer (hidden by default, toggled via JS) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-gray-800 px-4 py-4 space-y-3">
-            <a href="index.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Home</a>
-            <a href="services.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">Services</a>
-            <a href="about.html" class="block text-gray-300 hover:text-brandRed font-medium text-base">About</a>
-            <a href="contact.html" class="block text-brandRed font-medium text-base">Contact</a>
-            <hr class="border-gray-800 my-2">
-            <a href="tel:4165562424" class="block w-full text-center bg-brandRed hover:bg-red-700 text-white py-2.5 rounded text-sm font-semibold uppercase tracking-wider">
-                <i class="fa-solid fa-phone mr-2"></i>Call Now
-            </a>
-        </div>
-    </header>
-
-    <!-- MAIN WRAPPER (Flex-grow takes up rest of vertical space) -->
-    <main class="flex-grow">
-
-        <!-- Header Block for Contact Page -->
-        <section class="bg-neutral-100 border-b border-gray-200 py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3">Get in Touch</span>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">Contact & Inquiries</h1>
-                <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded"></div>
-            </div>
-        </section>
-
-        <!-- 
-          TWO-COLUMN MAIN CONTAINER
-          - 'py-16': Vertical padding for visual spacing.
-          - 'grid-cols-1': Single column stack on mobile screens.
-          - 'lg:grid-cols-2': Grid splits cleanly into a balanced 50/50 double-column layout on screens 1024px and up.
-          - 'gap-12': Standardizes comfortable spacing (48px) between Column A and Column B.
-        -->
-        <section class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    
-                    <!-- 
-                      COLUMN A: APPOINTMENT REQUEST FORM
-                      - Formspree attributes removed to transition submit processing to our custom AWS backend script.
-                    -->
-                    <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
-                        <div class="mb-6">
-                            <h2 class="text-xl font-bold text-charcoal flex items-center gap-2">
-                                <i class="fa-solid fa-calendar-check text-brandRed"></i>
-                                Request Appointment
-                            </h2>
-                            <p class="text-xs text-gray-500 mt-1">
-                                Complete the details below and Shafiq Patel will follow up shortly.
-                            </p>
-                        </div>
-
-                        <!-- 
-                          AWS Serverless Form
-                          - Given 'id="appointment-form"' to hook the JavaScript event listener logic securely.
-                        -->
-                        <form id="appointment-form" class="space-y-5">
-                            
-                            <!-- Full Name -->
-                            <div class="flex flex-col">
-                                <label for="name" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
-                                    Full Name <span class="text-brandRed">*</span>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    name="name" 
-                                    id="name" 
-                                    required 
-                                    placeholder="Shaun Miller" 
-                                    class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150"
-                                >
-                            </div>
-
-                            <!-- Phone Number -->
-                            <div class="flex flex-col">
-                                <label for="phone" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
-                                    Phone Number <span class="text-brandRed">*</span>
-                                </label>
-                                <input 
-                                    type="tel" 
-                                    name="phone" 
-                                    id="phone" 
-                                    required 
-                                    placeholder="(416) 555-0199" 
-                                    class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150"
-                                >
-                            </div>
-
-                            <!-- Vehicle Details Group (Using an inner 3-column sub-grid) -->
-                            <div class="grid grid-cols-3 gap-3">
-                                <div class="flex flex-col">
-                                    <label for="year" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Year *</label>
-                                    <input type="text" name="year" id="year" required placeholder="2019" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="make" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Make *</label>
-                                    <input type="text" name="make" id="make" required placeholder="Honda" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
-                                </div>
-                                <div class="flex flex-col">
-                                    <label for="model" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Model *</label>
-                                    <input type="text" name="model" id="model" required placeholder="Civic" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
-                                </div>
-                            </div>
-
-                            <!-- Preferred Date picker -->
-                            <div class="flex flex-col">
-                                <label for="date" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
-                                    Preferred Appointment Date <span class="text-brandRed">*</span>
-                                </label>
-                                <input 
-                                    type="date" 
-                                    name="date" 
-                                    id="date" 
-                                    required 
-                                    class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150"
-                                >
-                            </div>
-
-                            <!-- Describe the Issue -->
-                            <div class="flex flex-col">
-                                <label for="issue" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
-                                    Describe the Issue <span class="text-brandRed">*</span>
-                                </label>
-                                <textarea 
-                                    name="issue" 
-                                    id="issue" 
-                                    rows="4" 
-                                    required 
-                                    placeholder="Ex: Brake grinding noise, check engine diagnostics, scheduled oil change service..." 
-                                    class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150 resize-none"
-                                ></textarea>
-                            </div>
-
-                            <!-- Submit button config matched to index page loading logic -->
-                            <button id="submit-btn" type="submit" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 px-6 rounded uppercase tracking-wider text-xs shadow transition duration-200 flex items-center justify-center space-x-2">
-                                <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
-                                <span id="btn-text">Submit Request</span>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- 
-                      COLUMN B: CONTACT DETAILS & MAP
-                      - Displays shop coordinates, phone, email and active location maps without processing secure payments.
-                      - Uses 'flex flex-col space-y-8' to space elements down the column smoothly.
-                    -->
-                    <div class="flex flex-col space-y-8">
-                        
-                        <!-- Contact Information Card -->
-                        <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
-                            <div class="mb-6">
-                                <h2 class="text-xl font-bold text-charcoal flex items-center gap-2">
-                                    <i class="fa-solid fa-address-book text-brandRed"></i>
-                                    Shop Details
-                                </h2>
-                                <p class="text-xs text-gray-500 mt-1">
-                                    Feel free to drop by or reach out directly to our team.
-                                </p>
-                            </div>
-
-                            <!-- Structured details list -->
-                            <ul class="text-sm space-y-4 text-gray-600">
-                                <li class="flex items-start space-x-3">
-                                    <i class="fa-solid fa-location-dot text-brandRed mt-1"></i>
-                                    <div>
-                                        <strong class="text-charcoal block">My Choice Auto Service</strong>
-                                        <span>112 Select Ave Unit# 5, Scarborough, ON M1V 4A7</span>
-                                    </div>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <i class="fa-solid fa-phone text-brandRed"></i>
-                                    <div>
-                                        <strong class="text-charcoal block">Phone Number</strong>
-                                        <a href="tel:4165562424" class="hover:text-brandRed transition-colors duration-200">(416) 556-2424</a>
-                                    </div>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <i class="fa-solid fa-envelope text-brandRed"></i>
-                                    <div>
-                                        <strong class="text-charcoal block">Email Address</strong>
-                                        <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-brandRed transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Embedded Responsive Location Map Container -->
-                        <!-- 'flex-grow h-72 lg:h-auto min-h-[300px]' helps map stretch to fill container area cleanly -->
-                        <div class="flex flex-col bg-gray-50 border border-gray-100 rounded-lg p-4 shadow-sm h-72 lg:h-auto lg:flex-grow min-h-[300px]">
-                            <div class="mb-3 px-2 flex justify-between items-center text-xs">
-                                <span class="font-bold text-charcoal tracking-wide uppercase">Shop Location Map</span>
-                                <span class="text-brandRed font-medium">Scarborough, ON</span>
-                            </div>
-                            <iframe 
-                                class="w-full h-full flex-grow rounded border border-gray-200 shadow-inner"
-                                src="https://maps.google.com/maps?q=112%20Select%20Ave%20Unit%205,%20Scarborough,%20ON%20M1V%204A7&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 
-      GLOBAL FOOTER 
-      - Thick, red top border defines the brand aesthetic.
-    -->
-    <footer class="bg-charcoal text-gray-400 border-t-4 border-brandRed">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Column 1: Brand Brief -->
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fa-solid fa-wrench text-brandRed text-xl"></i>
-                        <span class="text-lg font-bold text-white tracking-wider uppercase">My Choice Auto</span>
+            <!-- Appointment Request Form -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-charcoal flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-check text-brandRed"></i>Request Appointment
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-1">Complete the details below and Shafiq Patel will follow up shortly.</p>
+                </div>
+                <form id="appointment-form" class="space-y-5">
+                    <div class="flex flex-col">
+                        <label for="name" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Full Name <span class="text-brandRed">*</span></label>
+                        <input type="text" name="name" id="name" required placeholder="Shaun Miller" class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
                     </div>
-                    <p class="text-sm leading-relaxed mb-2">
-                        Led by <strong>Shafiq Patel</strong>, a Certified Auto Technician, My Choice Auto Service provides honest, high-quality, and dependable mechanical repair.
-                    </p>
-                    <span class="inline-block bg-neutral-800 text-brandRed text-xs px-2.5 py-1 rounded font-semibold tracking-wider uppercase">
-                        Certified Auto Technician
-                    </span>
-                </div>
+                    <div class="flex flex-col">
+                        <label for="phone" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Phone Number <span class="text-brandRed">*</span></label>
+                        <input type="tel" name="phone" id="phone" required placeholder="(416) 555-0199" class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="flex flex-col">
+                            <label for="year" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Year *</label>
+                            <input type="text" name="year" id="year" required placeholder="2019" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="make" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Make *</label>
+                            <input type="text" name="make" id="make" required placeholder="Honda" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="model" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Model *</label>
+                            <input type="text" name="model" id="model" required placeholder="Civic" class="w-full bg-white border border-gray-200 rounded px-3 py-2.5 text-xs focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="date" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Preferred Appointment Date <span class="text-brandRed">*</span></label>
+                        <input type="date" name="date" id="date" required class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="issue" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Describe the Issue <span class="text-brandRed">*</span></label>
+                        <textarea name="issue" id="issue" rows="4" required placeholder="Ex: Brake grinding noise, check engine diagnostics, scheduled oil change service..." class="w-full bg-white border border-gray-200 rounded px-4 py-2.5 text-sm focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-all duration-150 resize-none"></textarea>
+                    </div>
+                    <button id="submit-btn" type="submit" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 px-6 rounded uppercase tracking-wider text-xs shadow transition duration-200 flex items-center justify-center space-x-2">
+                        <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
+                        <span id="btn-text">Submit Request</span>
+                    </button>
+                </form>
+            </div>
 
-                <!-- Column 2: Business Hours -->
-                <div>
-                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Hours of Operation</h3>
-                    <ul class="text-sm space-y-2">
-                        <li class="flex justify-between">
-                            <span>Monday - Friday</span>
-                            <span class="text-white">8:00 AM - 6:00 PM</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Saturday</span>
-                            <span class="text-white">9:00 AM - 3:00 PM</span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span>Sunday</span>
-                            <span class="text-gray-500 italic">Closed</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Location & Contact -->
-                <div>
-                    <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Our Location</h3>
-                    <ul class="text-sm space-y-3">
+            <!-- Shop Info & Map -->
+            <div class="flex flex-col space-y-8">
+                <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-charcoal flex items-center gap-2"><i class="fa-solid fa-address-book text-brandRed"></i>Shop Details</h2>
+                        <p class="text-xs text-gray-500 mt-1">Feel free to drop by or reach out directly to our team.</p>
+                    </div>
+                    <ul class="text-sm space-y-4 text-gray-600">
                         <li class="flex items-start space-x-3">
                             <i class="fa-solid fa-location-dot text-brandRed mt-1"></i>
-                            <span>112 Select Ave Unit# 5, M1V 4A7</span>
+                            <div>
+                                <strong class="text-charcoal block">My Choice Auto Service</strong>
+                                <span>112 Select Ave Unit# 5, Scarborough, ON M1V 4A7</span>
+                            </div>
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fa-solid fa-phone text-brandRed"></i>
-                            <a href="tel:4165562424" class="hover:text-white transition-colors duration-200">(416) 556-2424</a>
+                            <div>
+                                <strong class="text-charcoal block">Phone Number</strong>
+                                <a href="tel:4165562424" class="hover:text-brandRed transition-colors duration-200">(416) 556-2424</a>
+                            </div>
                         </li>
                         <li class="flex items-center space-x-3">
                             <i class="fa-solid fa-envelope text-brandRed"></i>
-                            <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-white transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
+                            <div>
+                                <strong class="text-charcoal block">Email Address</strong>
+                                <a href="mailto:Mychoiceautoservice@gmail.com" class="hover:text-white transition-colors duration-200 break-all">Mychoiceautoservice@gmail.com</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
 
+                <div class="flex flex-col bg-gray-50 border border-gray-100 rounded-lg p-4 shadow-sm h-72 lg:h-auto lg:flex-grow min-h-[300px]">
+                    <div class="mb-3 px-2 flex justify-between items-center text-xs">
+                        <span class="font-bold text-charcoal tracking-wide uppercase">Shop Location Map</span>
+                        <span class="text-brandRed font-medium">Scarborough, ON</span>
+                    </div>
+                    <iframe class="w-full h-full flex-grow rounded border border-gray-200 shadow-inner" src="https://maps.google.com/maps?q=112%20Select%20Ave%20Unit%205,%20Scarborough,%20ON%20M1V%204A7&t=&z=15&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
 
-            <!-- Bottom Copyright and Certification disclaimer -->
-            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-xs">
-                <p>&copy; 2026 My Choice Auto Service. All Rights Reserved. Licensed Auto Technicians.</p>
-            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- JAVASCRIPT FOR MOBILE NAVIGATION AND SERVERLESS AWS INTEGRATION -->
-    <script>
-        /* -------------------------------------------------------------
-         * 1. MOBILE MENU DRAWER TOGGLE LOGIC
-         * ------------------------------------------------------------- */
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+<!-- AWS Fetch Logic Script -->
+<script>
+    const appointmentForm = document.getElementById('appointment-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnIcon = document.getElementById('btn-icon');
+    const btnText = document.getElementById('btn-text');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    appointmentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const fullName = document.getElementById('name').value;
+        const phoneNumber = document.getElementById('phone').value;
+        const year = document.getElementById('year').value;
+        const make = document.getElementById('make').value;
+        const model = document.getElementById('model').value;
+        const appointmentDate = document.getElementById('date').value;
+        const issueDescription = document.getElementById('issue').value;
+
+        const combinedVehicle = `${year} ${make} ${model}`.trim();
+        const payload = { name: fullName, phone: phoneNumber, vehicle: combinedVehicle, issue: issueDescription, date: appointmentDate };
+
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        btnIcon.className = "fa-solid fa-spinner animate-spin";
+        btnText.textContent = "Sending Request...";
+
+        fetch('https://aiun423k73.execute-api.ca-central-1.amazonaws.com/default/MechanicContactForm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Appointment request routed successfully!');
+                appointmentForm.reset();
+            } else {
+                throw new Error(`Server status ${response.status}`);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert('A problem occurred. Please call us directly at (416) 556-2424.');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            btnIcon.className = "fa-solid fa-paper-plane";
+            btnText.textContent = "Submit Request";
         });
-
-        /* -------------------------------------------------------------
-         * 2. AWS API GATEWAY / SERVERLESS FORM SUBMISSION WITH FETCH
-         * ------------------------------------------------------------- */
-        // Grab references to the form and its submission controls
-        const appointmentForm = document.getElementById('appointment-form');
-        const submitBtn = document.getElementById('submit-btn');
-        const btnIcon = document.getElementById('btn-icon');
-        const btnText = document.getElementById('btn-text');
-
-        // Add an EventListener to intercept the "submit" event before the browser reloads the page
-        appointmentForm.addEventListener('submit', function (event) {
-            
-            // 1. Prevent the standard HTML browser reload submit behavior
-            event.preventDefault();
-
-            // 2. Extract values from DOM inputs
-            const fullName = document.getElementById('name').value;
-            const phoneNumber = document.getElementById('phone').value;
-            const year = document.getElementById('year').value;
-            const make = document.getElementById('make').value;
-            const model = document.getElementById('model').value;
-            const appointmentDate = document.getElementById('date').value;
-            const issueDescription = document.getElementById('issue').value;
-
-            // 3. Format the vehicle details into a single unified string
-            // This aligns our HTML client layout to match the single "vehicle" variable in the Lambda structure
-            const combinedVehicle = `${year} ${make} ${model}`.trim();
-
-            // 4. Construct the JSON payload with keys EXACTLY matching Lambda variables
-            const payload = {
-                name: fullName,
-                phone: phoneNumber,
-                vehicle: combinedVehicle,
-                issue: issueDescription,
-                date: appointmentDate
-            };
-
-            // 5. Update UI state to show visual loading feedback
-            submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-            btnIcon.className = "fa-solid fa-spinner animate-spin";
-            btnText.textContent = "Sending Request...";
-
-            // 6. Use the browser's Fetch API to dispatch the HTTP POST request to AWS API Gateway
-            fetch('https://aiun423k73.execute-api.ca-central-1.amazonaws.com/default/MechanicContactForm', {
-                method: 'POST', // Use POST method to safely send JSON payload in request body
-                headers: {
-                    'Content-Type': 'application/json' // Tell API Gateway / Lambda to expect raw JSON format
-                },
-                body: JSON.stringify(payload) // Convert JavaScript object to a raw string representation
-            })
-            // First step of the Promise chain: evaluates the incoming HTTP status
-            .then(response => {
-                // Check if response is within the HTTP OK (200-299) status range
-                if (response.ok) {
-                    // Alert user on success
-                    alert('Appointment request routed successfully!');
-                    // Reset all form inputs to empty states
-                    appointmentForm.reset();
-                } else {
-                    // Handle non-200 responses (e.g., 400 Bad Request, 500 Server Error)
-                    throw new Error(`Server returned HTTP ${response.status}`);
-                }
-            })
-            // Catch block to capture network disconnects, server issues, or rejected promises
-            .catch(error => {
-                console.error('Submission failed:', error);
-                alert('A problem occurred while routing your appointment request. Please call us directly at (416) 556-2424.');
-            })
-            // Finally block cleans up UI state regardless of success or failure
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                btnIcon.className = "fa-solid fa-paper-plane";
-                btnText.textContent = "Submit Request";
-            });
-        });
-    </script>
-</body>
-</html>
+    });
+</script>
