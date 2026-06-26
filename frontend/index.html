@@ -16,10 +16,21 @@ activePage: home
             Family Owned & Operated by Certified Auto Technician <span class="text-white font-semibold">Shafiq Patel</span>.
         </p>
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <!-- Book Appointment (Always visible) -->
             <a href="#appointment-section" class="w-full sm:w-auto bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-lg transition duration-200 text-center">
                 Book An Appointment
             </a>
-            <!-- Link updated to Pretty URL path -->
+            
+            <!-- 
+              Call Now Button (Visible ONLY on mobile devices)
+              - 'sm:hidden' hides this button automatically on tablets, laptops, and desktop monitors.
+            -->
+            <a href="tel:4165562424" class="w-full sm:hidden bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-lg transition duration-200 text-center flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Us Now</span>
+            </a>
+
+            <!-- Explore Services (Always visible) -->
             <a href="/services/" class="w-full sm:w-auto border border-white hover:bg-white hover:text-charcoal text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm transition duration-200 text-center">
                 Explore Services
             </a>
@@ -31,7 +42,6 @@ activePage: home
 <section id="trust-banner" class="bg-neutral-900 text-white border-y border-neutral-800 py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <!-- Trust Block 1 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -43,7 +53,6 @@ activePage: home
                     <p class="text-xs text-gray-400">Professional Technicians</p>
                 </div>
             </div>
-            <!-- Trust Block 2 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -55,7 +64,6 @@ activePage: home
                     <p class="text-xs text-gray-400">Trusted Local Auto Service</p>
                 </div>
             </div>
-            <!-- Trust Block 3 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -86,7 +94,6 @@ activePage: home
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Brake Service</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-5">Complete brake inspections, pad replacement, and rotor resurfacing to ensure your stopping power is reliable.</p>
-                <!-- Link updated to Pretty URL path -->
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
                     Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
@@ -97,7 +104,6 @@ activePage: home
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Diagnostic Check</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-5">Advanced digital diagnostics to pinpoint performance warnings, sensor anomalies, and engine trouble codes.</p>
-                <!-- Link updated to Pretty URL path -->
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
                     Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
@@ -108,7 +114,6 @@ activePage: home
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Oil & Filter Change</h3>
                 <p class="text-gray-600 text-sm leading-relaxed mb-5">Premium standard or synthetic fluid replacement paired with fresh filters to extend high performance.</p>
-                <!-- Link updated to Pretty URL path -->
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
                     Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>

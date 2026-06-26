@@ -7,6 +7,13 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
 
+    <!-- FREE CUSTOM HIGH-QUALITY WEB FAVICON -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/wrench.png">
+
+    <!-- MOBILE WEB APP APP-ICON CAPABILITIES -->
+    <meta name="apple-mobile-web-app-title" content="My Choice Auto">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/wrench.png">
+
     <!-- Tailwind CSS & Custom Config -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -83,16 +90,13 @@
             <div class="flex items-center justify-between h-20">
                 
                 <div class="flex-shrink-0">
-                    <!-- Link changed from index.html to / -->
                     <a href="/" class="flex items-center space-x-2">
                         <i class="fa-solid fa-wrench text-brandRed text-2xl"></i>
                         <span class="text-xl font-bold tracking-wider uppercase">My Choice<span class="text-brandRed"> Auto</span></span>
                     </a>
                 </div>
 
-                <!-- 
-                  Desktop Navigation Menu (Updated to Clean URLs)
-                -->
+                <!-- Desktop Navigation Menu -->
                 <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
                     <a href="/" class="{% if activePage == 'home' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Home</a>
                     <a href="/services/" class="{% if activePage == 'services' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Services</a>
@@ -100,13 +104,23 @@
                     <a href="/contact/" class="{% if activePage == 'contact' %}text-brandRed{% else %}hover:text-brandRed{% endif %} transition-colors duration-200">Contact</a>
                 </nav>
 
+                <!-- Desktop Action Button (Visible ONLY on desktop screens) -->
                 <div class="hidden md:block">
                     <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white px-5 py-2.5 rounded text-sm font-semibold uppercase tracking-wider transition-colors duration-200">
                         <i class="fa-solid fa-phone mr-2"></i>Call Now
                     </a>
                 </div>
 
-                <div class="md:hidden">
+                <!-- 
+                  Mobile Action Area (Visible ONLY on mobile devices)
+                  - Placed next to the hamburger menu so customers can call instantly with 1 tap.
+                -->
+                <div class="flex items-center space-x-3 md:hidden">
+                    <!-- Mobile Instant Call Button -->
+                    <a href="tel:4165562424" class="bg-brandRed hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-200 shadow-sm" aria-label="Call Now">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                    <!-- Hamburger Toggle Button -->
                     <button id="mobile-menu-btn" type="button" class="text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Navigation Menu">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
@@ -115,7 +129,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Updated to Clean URLs) -->
+        <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-t border-gray-800 px-4 py-4 space-y-3">
             <a href="/" class="block {% if activePage == 'home' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">Home</a>
             <a href="/services/" class="block {% if activePage == 'services' %}text-brandRed{% else %}text-gray-300 hover:text-brandRed{% endif %} font-medium text-base">Services</a>
@@ -128,15 +142,16 @@
         </div>
     </header>
 
+    <!-- UNIQUE MAIN PAGE CONTENT INJECTION POINT -->
     <main class="flex-grow">
         {{ content | safe }}
     </main>
 
-    <!-- GLOBAL FOOTER (The single source of truth for business hours) -->
+    <!-- GLOBAL FOOTER -->
     <footer class="bg-charcoal text-gray-400 border-t-4 border-brandRed">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Column 1: Brand Brief -->
+                <!-- Column 1 -->
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
                         <i class="fa-solid fa-wrench text-brandRed text-xl"></i>
@@ -145,7 +160,7 @@
                     <p class="text-sm leading-relaxed mb-2">Led by <strong>Shafiq Patel</strong>, a Certified Auto Technician, My Choice Auto Service provides honest, high-quality, and dependable mechanical repair.</p>
                     <span class="inline-block bg-neutral-800 text-brandRed text-xs px-2.5 py-1 rounded font-semibold tracking-wider uppercase">Certified Auto Technician</span>
                 </div>
-                <!-- Column 2: Hours of Operation -->
+                <!-- Column 2 -->
                 <div>
                     <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Hours of Operation</h3>
                     <ul class="text-sm space-y-2">
@@ -155,7 +170,7 @@
                         <li class="flex justify-between"><span>Sunday</span><span class="text-gray-500 italic">Closed</span></li>
                     </ul>
                 </div>
-                <!-- Column 3: Contact Details -->
+                <!-- Column 3 -->
                 <div>
                     <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Our Location</h3>
                     <ul class="text-sm space-y-3">

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice | My Choice Auto Service</title>
+    <!-- Tailwind CSS CDN for modern grid, typography, and spacing utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for official invoice vector iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.25in; /* Maximizes printable area to guarantee a single-page output */
+            }
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .print-shadow-none {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 py-4 px-4 sm:px-6 lg:px-8 h-full">
+
+    <!-- MAIN INVOICE CARD -->
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md border border-gray-100 p-6 print-shadow-none">
+        
+        <!-- Header: Logo, Branding & Invoice Title -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 pb-4 gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded bg-neutral-900 text-white">
+                    <i class="fa-solid fa-wrench text-rose-600 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold uppercase tracking-wider text-neutral-900">My Choice Auto</h1>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Development Services</span>
+                </div>
+            </div>
+            <div class="text-left md:text-right">
+                <h2 class="text-2xl font-black uppercase tracking-tight text-neutral-900 mb-1">Invoice</h2>
+                <div class="text-xs text-gray-500 space-y-0.5">
+                    <p class="font-semibold text-neutral-800">Invoice No: <span class="text-neutral-900">INV-2026-001</span></p>
+                    <p>Date: June 26, 2026</p>
+                    <p class="text-neutral-800 font-semibold">Payment Terms: <span class="text-neutral-900">Due on Receipt</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing Parties Address Details Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 border-b border-gray-100 pb-4">
+            <!-- Developer details -->
+            <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-rose-600 block">From / Service Provider:</span>
+                <div>
+                    <h3 class="font-bold text-neutral-900 text-sm">Saad Hussain Sayed</h3>
+                    <p class="text-[11px] text-gray-500">Scarborough, ON</p>
+                    <div class="flex items-center space-x-2 text-[11px] text-gray-600 mt-0.5">
+                        <i class="fa-solid fa-envelope text-gray-400"></i>
+                        <a href="mailto:saad.hussain787@hotmail.com" class="hover:text-rose-600 transition-colors duration-150">saad.hussain787@hotmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Client details -->
+            <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-rose-600 block">Bill To / Client:</span>
+                <div>
+                    <h3 class="font-bold text-neutral-900 text-sm">My Choice Auto Service</h3>
+                    <p class="text-[11px] text-gray-500">Attn: Shafiq Patel (Certified Auto Technician)</p>
+                    <p class="text-[11px] text-gray-500">112 Select Ave Unit# 5, Scarborough, ON M1V 4A7</p>
+                    <div class="flex items-center space-x-2 text-[11px] text-gray-600 mt-0.5">
+                        <i class="fa-solid fa-phone text-gray-400"></i>
+                        <a href="tel:4165562424" class="hover:text-rose-600 transition-colors duration-200">(416) 556-2424</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deliverables Itemized Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-neutral-900 text-white text-[9px] uppercase tracking-wider">
+                        <th class="py-2 px-3 rounded-l font-bold">Deliverable Service</th>
+                        <th class="py-2 px-3 text-center font-bold">Qty</th>
+                        <th class="py-2 px-3 text-right font-bold rounded-r">Rate (CAD)</th>
+                    </tr>
+                </thead>
+                <tbody class="text-[11px] divide-y divide-gray-100">
+                    <!-- Item 1 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">Responsive Web Design & Development (4 Pages)</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">Complete mobile-optimized layout and navigation framework for all 4 primary site pages [1].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$1,200.00</td>
+                    </tr>
+                    <!-- Item 2 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">Serverless AWS Pipeline Integration</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">Asynchronous lead-routing integration using AWS Lambda, API Gateway, and Amazon SES [2, 5].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$750.00</td>
+                    </tr>
+                    <!-- Item 3 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">Eleventy (11ty) Architecture Implementation</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">Eleventy layout system establishing a single source of truth for global updates (hours, phone) [7].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$400.00</td>
+                    </tr>
+                    <!-- Item 4 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">Google Local SEO & Schema Optimization</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">JSON-LD schema markup configured for local Scarborough Google search indexing [4].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$350.00</td>
+                    </tr>
+                    <!-- Item 5 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">Automatic Mobile Translation Engine</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">Google Translate integration to automatically detect client system language on load [1].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$250.00</td>
+                    </tr>
+                    <!-- Item 6 -->
+                    <tr>
+                        <td class="py-2 px-3">
+                            <strong class="text-neutral-900 block font-bold">AWS Amplify CI/CD Cloud Deployment</strong>
+                            <span class="text-[10px] text-gray-500 block leading-normal">Amplify hosting setup featuring continuous Git deployments and secure SSL padlock [5].</span>
+                        </td>
+                        <td class="py-2 px-3 text-center text-neutral-900 font-semibold">1</td>
+                        <td class="py-2 px-3 text-right text-neutral-900 font-semibold">$150.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Financial Summary Block -->
+        <div class="flex flex-col sm:flex-row justify-between items-start mt-4 pt-4 border-t border-gray-100 gap-6">
+            <!-- Payment Instructions Box -->
+            <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 max-w-sm w-full">
+                <h4 class="font-bold text-[10px] uppercase tracking-wider text-neutral-900 mb-2 flex items-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-rose-600"></i>
+                    Interac E-Transfer Details
+                </h4>
+                <div class="text-[11px] text-gray-600 space-y-1 leading-relaxed">
+                    <p>Please send the final balance to:</p>
+                    <p class="font-bold text-neutral-900 bg-white border border-gray-200 rounded px-2.5 py-1 block">
+                        saad.hussain787@hotmail.com
+                    </p>
+                    <p class="italic text-[9px] text-gray-400">
+                        * Note: Domain registration for mychoiceautoservice.com will be linked directly to your live hosting upon receipt [5, 6].
+                    </p>
+                </div>
+            </div>
+
+            <!-- Calculations Area (85% Discount & 13% HST) -->
+            <div class="w-full sm:max-w-xs">
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between text-gray-500">
+                        <span>Gross Development Subtotal:</span>
+                        <span class="font-semibold text-neutral-900">$3,100.00</span>
+                    </div>
+                    <!-- 85% Discount -->
+                    <div class="flex justify-between text-green-600 font-medium">
+                        <span>Family & Friends Discount (85%):</span>
+                        <span>-$2,635.00</span>
+                    </div>
+                    <div class="flex justify-between text-gray-500">
+                        <span>Net Development Subtotal:</span>
+                        <span class="font-semibold text-neutral-900">$465.00</span>
+                    </div>
+                    <!-- 13% Ontario HST -->
+                    <div class="flex justify-between text-gray-500">
+                        <span>HST (13%):</span>
+                        <span class="font-semibold text-neutral-900">$60.45</span>
+                    </div>
+                    <div class="flex justify-between text-gray-500">
+                        <span>Domain Registration Fee:</span>
+                        <span class="italic text-[10px]">Paid Directly to GoDaddy</span>
+                    </div>
+                    <!-- Final exact total (with 13% HST) -->
+                    <div class="flex justify-between text-neutral-900 font-black text-lg pt-1 border-t border-gray-100">
+                        <span>Total Due:</span>
+                        <span class="text-neutral-900">$525.45 CAD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer terms and notes -->
+        <div class="border-t border-gray-100 mt-6 pt-4 text-center">
+            <p class="text-[10px] text-gray-400 leading-normal">
+                Thank you for your business. It has been a pleasure setting up the new serverless cloud web system for <strong>My Choice Auto Service</strong> [2, 5].
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
