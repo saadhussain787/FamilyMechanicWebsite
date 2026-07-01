@@ -9,28 +9,33 @@ activePage: home
 <section id="hero" class="relative bg-cover bg-center flex items-center justify-center min-h-[75vh]" style="background-image: url('https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?q=80&w=1920');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+        
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
             Honest Service <br class="hidden sm:inline">For Your <span class="text-brandRed">Car Care</span>
         </h1>
+
         <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
             Family Owned & Operated by Certified Auto Technician <span class="text-white font-semibold">Shafiq Patel</span>.
         </p>
+
+        <!-- 
+          HERO ACTION BUTTONS
+          - 'sm:hidden' displays the black 'Call Us Now' button only on mobile displays [8].
+          - Desktop layout maintains your clean, original two-button structure.
+        -->
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <!-- Book Appointment (Always visible) -->
+            <!-- Primary Action: Book Appointment (Always visible) -->
             <a href="#appointment-section" class="w-full sm:w-auto bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-lg transition duration-200 text-center">
                 Book An Appointment
             </a>
-            
-            <!-- 
-              Call Now Button (Visible ONLY on mobile devices)
-              - 'sm:hidden' hides this button automatically on tablets, laptops, and desktop monitors.
-            -->
+
+            <!-- Mobile-Only Call CTA (Hidden on desktop, visible on mobile screens) -->
             <a href="tel:4165562424" class="w-full sm:hidden bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-lg transition duration-200 text-center flex items-center justify-center space-x-2">
                 <i class="fa-solid fa-phone"></i>
                 <span>Call Us Now</span>
             </a>
 
-            <!-- Explore Services (Always visible) -->
+            <!-- Secondary Action: Explore Services (Always visible, clean pretty URL) -->
             <a href="/services/" class="w-full sm:w-auto border border-white hover:bg-white hover:text-charcoal text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm transition duration-200 text-center">
                 Explore Services
             </a>
@@ -42,6 +47,8 @@ activePage: home
 <section id="trust-banner" class="bg-neutral-900 text-white border-y border-neutral-800 py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Trust Block 1 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -53,6 +60,8 @@ activePage: home
                     <p class="text-xs text-gray-400">Professional Technicians</p>
                 </div>
             </div>
+
+            <!-- Trust Block 2 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -64,6 +73,8 @@ activePage: home
                     <p class="text-xs text-gray-400">Trusted Local Auto Service</p>
                 </div>
             </div>
+
+            <!-- Trust Block 3 -->
             <div class="flex items-center space-x-4 justify-center md:justify-start">
                 <div class="flex-shrink-0">
                     <div class="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700">
@@ -75,6 +86,7 @@ activePage: home
                     <p class="text-xs text-gray-400">Honest Care You Can Rely On</p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -82,49 +94,78 @@ activePage: home
 <!-- SERVICES PREVIEW SECTION -->
 <section id="services-preview" class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header Area -->
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3 font-semibold">What We Do</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">Professional Auto Repair Services</h2>
+            <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3">
+                What We Do
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">
+                Professional Auto Repair Services
+            </h2>
             <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded"></div>
         </div>
+
+        <!-- Services 3-Column Grid Layout -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Service Card 1: Brake Service -->
             <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
                     <i class="fa-solid fa-car-burst text-xl"></i>
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Brake Service</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-5">Complete brake inspections, pad replacement, and rotor resurfacing to ensure your stopping power is reliable.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                    Complete brake inspections, pad replacement, and rotor resurfacing to ensure your stopping power is reliable.
+                </p>
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
-                    Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                    Learn More 
+                    <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
             </div>
+
+            <!-- Service Card 2: Diagnostic Check -->
             <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
                     <i class="fa-solid fa-computer text-xl"></i>
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Diagnostic Check</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-5">Advanced digital diagnostics to pinpoint performance warnings, sensor anomalies, and engine trouble codes.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                    Advanced digital diagnostics to pinpoint performance warnings, sensor anomalies, and engine trouble codes.
+                </p>
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
-                    Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                    Learn More 
+                    <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
             </div>
+
+            <!-- Service Card 3: Oil & Filter Change -->
             <div class="group bg-gray-50 border border-gray-100 rounded-lg p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-50 text-brandRed mb-6 transition-colors duration-300 group-hover:bg-brandRed group-hover:text-white">
                     <i class="fa-solid fa-oil-can text-xl"></i>
                 </div>
                 <h3 class="text-lg font-bold text-charcoal mb-3">Oil & Filter Change</h3>
-                <p class="text-gray-600 text-sm leading-relaxed mb-5">Premium standard or synthetic fluid replacement paired with fresh filters to extend high performance.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-5">
+                    Premium standard or synthetic fluid replacement paired with fresh filters to extend high performance.
+                </p>
                 <a href="/services/" class="inline-flex items-center text-sm font-semibold text-brandRed hover:text-red-700 transition-colors duration-200">
-                    Learn More <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
+                    Learn More 
+                    <i class="fa-solid fa-arrow-right ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1"></i>
                 </a>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- GOOGLE REVIEWS SECTION -->
+<!-- 
+  GOOGLE REVIEWS TESTIMONIALS SECTION
+  - Integrated with your live Trustindex.io secure script [6].
+-->
 <section id="reviews" class="bg-white py-20 border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-16">
             <span class="text-xs font-bold tracking-widest text-brandRed uppercase block mb-3 font-semibold">Testimonials</span>
             <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal tracking-tight">What Our Customers Say</h2>
@@ -136,65 +177,15 @@ activePage: home
             </div>
             <div class="w-12 h-1 bg-brandRed mx-auto mt-4 rounded"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Review 1 -->
-            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex text-yellow-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-brands fa-google text-gray-400 text-lg"></i>
-                    </div>
-                    <p class="text-gray-600 text-sm italic leading-relaxed mb-6">"Shafiq is the only mechanic I trust with my family's cars. He diagnosed an engine noise that two other shops missed, and his pricing was incredibly fair. Extremely honest and professional."</p>
-                </div>
-                <div class="flex items-center space-x-3 pt-4 border-t border-gray-200">
-                    <div class="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center font-bold text-xs text-charcoal">MA</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-charcoal">Michael A.</h4>
-                        <span class="text-[11px] text-gray-400 block uppercase font-medium">Verified Customer</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Review 2 -->
-            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex text-yellow-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-brands fa-google text-gray-400 text-lg"></i>
-                    </div>
-                    <p class="text-gray-600 text-sm italic leading-relaxed mb-6">"Brought my Honda in for a brake service. Shafiq explained exactly what needed replacement and what didn't. Highly appreciate the integrity here. Outstanding turnaround time!"</p>
-                </div>
-                <div class="flex items-center space-x-3 pt-4 border-t border-gray-200">
-                    <div class="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center font-bold text-xs text-charcoal">SK</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-charcoal">Sinthu K.</h4>
-                        <span class="text-[11px] text-gray-400 block uppercase font-medium">Verified Customer</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Review 3 -->
-            <div class="bg-gray-50 border border-gray-100 rounded-lg p-8 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex text-yellow-400 text-xs">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <i class="fa-brands fa-google text-gray-400 text-lg"></i>
-                    </div>
-                    <p class="text-gray-600 text-sm italic leading-relaxed mb-6">"Fantastic service. Shafiq does my regular oil changes and vehicle maintenance. He operates with high integrity, never pushes upsells, and always finishes the work on schedule."</p>
-                </div>
-                <div class="flex items-center space-x-3 pt-4 border-t border-gray-200">
-                    <div class="w-10 h-10 rounded-full bg-neutral-200 flex items-center justify-center font-bold text-xs text-charcoal">JD</div>
-                    <div>
-                        <h4 class="font-bold text-sm text-charcoal">Jason D.</h4>
-                        <span class="text-[11px] text-gray-400 block uppercase font-medium">Verified Customer</span>
-                    </div>
-                </div>
-            </div>
+
+        <!-- 
+          LIVE TRUSTINDEX SCRIPT EMBED
+          - Securely loads and displays your real Google Reviews in real-time [6].
+        -->
+        <div class="w-full">
+            <script defer async src='https://cdn.trustindex.io/loader.js?63b278775e57511a707644633b2'></script>
         </div>
+
     </div>
 </section>
 
@@ -208,15 +199,22 @@ activePage: home
         </div>
         <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8 md:p-10 border border-gray-100">
             <form id="appointment-form" class="space-y-6">
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Full Name Field -->
                     <div class="flex flex-col">
                         <label for="full-name" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Full Name <span class="text-brandRed">*</span></label>
                         <input type="text" name="name" id="full-name" required placeholder="John Doe" class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150">
                     </div>
+
+                    <!-- Phone Number Field -->
                     <div class="flex flex-col">
                         <label for="phone-number" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Phone Number <span class="text-brandRed">*</span></label>
                         <input type="tel" name="phone" id="phone-number" required placeholder="(416) 555-0199" class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150">
                     </div>
+
+                    <!-- Vehicle Information Group -->
                     <div class="md:col-span-2 grid grid-cols-3 gap-4">
                         <div class="flex flex-col">
                             <label for="vehicle-year" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Year *</label>
@@ -231,21 +229,29 @@ activePage: home
                             <input type="text" name="model" id="vehicle-model" required placeholder="Camry" class="w-full bg-gray-50 border border-gray-200 rounded px-3 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150">
                         </div>
                     </div>
+
+                    <!-- Preferred Appointment Date Field -->
                     <div class="md:col-span-2 flex flex-col">
                         <label for="preferred-date" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Preferred Appointment Date <span class="text-brandRed">*</span></label>
                         <input type="date" name="date" id="preferred-date" required class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150">
                     </div>
+
+                    <!-- Describe the Issue Area -->
                     <div class="md:col-span-2 flex flex-col">
                         <label for="issue-description" class="text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">Describe The Issue / Required Service <span class="text-brandRed">*</span></label>
                         <textarea name="message" id="issue-description" rows="4" required placeholder="Please describe symptoms, unusual noises, or specific services needed (e.g., Brake inspection, Oil Change, Engine light diagnostics)..." class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 text-sm text-charcoal placeholder-gray-400 focus:bg-white focus:border-brandRed focus:ring-1 focus:ring-brandRed focus:outline-none transition-colors duration-150 resize-none"></textarea>
                     </div>
+
                 </div>
+
+                <!-- Submit Button Container -->
                 <div class="pt-4">
                     <button id="submit-btn" type="submit" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded uppercase tracking-wider text-sm shadow-md transition-colors duration-200 flex items-center justify-center space-x-2">
                         <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
                         <span id="btn-text">Submit Request</span>
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -253,6 +259,14 @@ activePage: home
 
 <!-- AWS Fetch Logic Script -->
 <script>
+    // Calendar Restriction logic on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const datePicker = document.getElementById("preferred-date");
+        if (datePicker) { 
+            datePicker.min = new Date().toISOString().split("T")[0]; 
+        }
+    });
+
     const appointmentForm = document.getElementById('appointment-form');
     const submitBtn = document.getElementById('submit-btn');
     const btnIcon = document.getElementById('btn-icon');
@@ -283,6 +297,7 @@ activePage: home
         btnIcon.className = "fa-solid fa-spinner animate-spin";
         btnText.textContent = "Sending Request...";
 
+        // Pointed securely to your custom live AWS API Gateway Route
         fetch('https://aiun423k73.execute-api.ca-central-1.amazonaws.com/default/MechanicContactForm', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
