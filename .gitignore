@@ -1,2 +1,5 @@
 # Ignore compiled Eleventy output
 frontend/_site/
+# Local tooling
+.agent/
+*repomix*
